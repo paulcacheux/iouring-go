@@ -1,3 +1,4 @@
+//go:build linux
 // +build linux
 
 package iouring
@@ -21,9 +22,3 @@ func bytes2iovec(bs [][]byte) []syscall.Iovec {
 	}
 	return iovecs
 }
-
-//go:linkname sockaddr syscall.Sockaddr.sockaddr
-func sockaddr(addr syscall.Sockaddr) (unsafe.Pointer, uint32, error)
-
-//go:linkname anyToSockaddr syscall.anyToSockaddr
-func anyToSockaddr(rsa *syscall.RawSockaddrAny) (syscall.Sockaddr, error)
